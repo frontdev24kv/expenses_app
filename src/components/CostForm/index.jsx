@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./index.css";
 
-const CostForm = () => {
+const CostForm = (props) => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [date, setDate] = useState("");
@@ -17,11 +17,12 @@ const CostForm = () => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    costData = {
+    const costData = {
       title,
       price,
-      date
+      date: new Date(date)
     };
+    props.onSaveInputData(costData)
     setTitle('')
     setPrice('')
     setDate('')
@@ -32,7 +33,7 @@ const CostForm = () => {
       <div className="new-cost__controls">
         <div className="new-cost__control">
           <label>Title</label>
-          <input type="text" value={title} onChange={titleChangeHandler} />
+          <input type="text" value={title} onChange={titleChangeHandler} required/>
         </div>
         <div className="new-cost__control">
           <label>Price</label>
@@ -42,6 +43,7 @@ const CostForm = () => {
             min="0.01"
             step="0.01"
             onChange={priceChangeHandler}
+            required
           />
         </div>
         <div className="new-cost__control">
@@ -52,6 +54,7 @@ const CostForm = () => {
             min="2021-01-01"
             max="2025-12-31"
             onChange={dateChangeHandler}
+            required
           />
         </div>
         <div className="new-cost__actions">
