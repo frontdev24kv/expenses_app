@@ -1,4 +1,5 @@
 import Costs from "./components/Costs";
+import NewCost from "./components/NewCost";
 
 function App() {
 
@@ -22,7 +23,8 @@ function App() {
 
   return (
     <>
-      <h1>Expenses App</h1>
+      {/* <h1>Expenses App</h1> */}
+      <NewCost />
       <Costs costs={costs}/>
     </>
   );
