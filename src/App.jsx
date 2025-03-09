@@ -1,5 +1,6 @@
 import Costs from "./components/Costs";
 import NewCost from "./components/NewCost";
+import { useState } from "react";
 
 function App() {
   const costs = [
@@ -22,14 +23,16 @@ function App() {
       amount: 2142.16,
     },
   ];
+
+  const [expenses, setExpenses] = useState(costs)
   const addCost = (cost) => {
-    console.log(cost);
+    setExpenses((previousState) => [cost, ...previousState,])
   };
   return (
     <>
       <h1 className="main-title">Expenses App</h1>
       <NewCost onAddCost={addCost} />
-      <Costs costs={costs} />
+      <Costs costs={expenses} />
     </>
   );
 }

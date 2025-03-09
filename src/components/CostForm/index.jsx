@@ -18,28 +18,33 @@ const CostForm = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     const costData = {
-      title,
-      price,
-      date: new Date(date)
+      description: title,
+      amount: price,
+      date: new Date(date),
     };
-    props.onSaveInputData(costData)
-    setTitle('')
-    setPrice('')
-    setDate('')
+    props.onSaveInputData(costData);
+    setTitle("");
+    setPrice("");
+    setDate("");
   };
-  
+
   return (
     <form onSubmit={submitHandler}>
       <div className="new-cost__controls">
         <div className="new-cost__control">
           <label>Title</label>
-          <input type="text" value={title} onChange={titleChangeHandler} required/>
+          <input
+            type="text"
+            value={title}
+            onChange={titleChangeHandler}
+            required
+          />
         </div>
         <div className="new-cost__control">
           <label>Price</label>
           <input
             type="number"
-            value={price} 
+            value={price}
             min="0.01"
             step="0.01"
             onChange={priceChangeHandler}
@@ -50,7 +55,7 @@ const CostForm = (props) => {
           <label>Date</label>
           <input
             type="date"
-            value={date} 
+            value={date}
             min="2021-01-01"
             max="2025-12-31"
             onChange={dateChangeHandler}
