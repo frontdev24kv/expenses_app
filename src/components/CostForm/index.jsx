@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import "./index.css";
 
 const CostForm = (props) => {
@@ -9,12 +10,15 @@ const CostForm = (props) => {
   const titleChangeHandler = (e) => {
     setTitle(e.target.value);
   };
+
   const priceChangeHandler = (e) => {
     setPrice(e.target.value);
   };
+
   const dateChangeHandler = (e) => {
     setDate(e.target.value);
   };
+
   const submitHandler = (e) => {
     e.preventDefault();
     const costData = {
@@ -22,7 +26,9 @@ const CostForm = (props) => {
       amount: price,
       date: new Date(date),
     };
+
     props.onSaveInputData(costData);
+
     setTitle("");
     setPrice("");
     setDate("");

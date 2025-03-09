@@ -1,5 +1,6 @@
 import Costs from "./components/Costs";
 import NewCost from "./components/NewCost";
+
 import { useState } from "react";
 
 function App() {

@@ -1,9 +1,12 @@
 import CostForm from "../CostForm";
-import "./index.css";
+
 import { useState } from "react";
+
+import "./index.css";
 
 const NewCost = (props) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
+
   const saveCostDataHandler = (inputCostData) => {
     const costData = {
       ...inputCostData,
@@ -16,14 +19,17 @@ const NewCost = (props) => {
   const inputCostDataHandler = () => {
     setIsFormVisible(true);
   };
+
   const canselCostHandler = () => {
     setIsFormVisible(false);
   };
+
   return (
     <div className="new-cost">
       {!isFormVisible && (
         <button onClick={inputCostDataHandler}>Add a new expense</button>
       )}
+
       {isFormVisible && (
         <CostForm
           onSaveInputData={saveCostDataHandler}
